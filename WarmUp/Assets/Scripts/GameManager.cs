@@ -107,8 +107,25 @@ public class GameManager : MonoBehaviour
 		{
 			timer -= Time.deltaTime;
 		}
+		//when time's up
+		else
+		{
+			CheckHighscore();
+
+			//restart the game
+			Application.LoadLevel(Application.loadedLevel);
+		}
 	}	
 	
+	// Check Highscore
+	public void CheckHighscore ()
+	{
+		if (score > PlayerPrefs.GetInt("Highscore"))
+		{
+			PlayerPrefs.SetInt("Highscore", score);
+		}
+	}
+
 	// Check arrangement of dots
 	public void CheckArrangementOfDots ()
 	{

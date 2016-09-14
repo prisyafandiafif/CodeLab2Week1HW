@@ -29,20 +29,23 @@ public class GameManager : MonoBehaviour
 	// Init random dots
 	public void InitDots ()
 	{
-		for (int i = 0; i < rowAmount; i++)
+		for (int j = 0; j < columnAmount; j++)
 		{
-			int randomIDForDots = Random.Range(0, 4);
-
-			GameObject newDot = Instantiate(dots[randomIDForDots]);
-
-			//make it a parent of dotsContainer
-			newDot.transform.parent = dotsContainer.transform;
-
-			//position it
-			//newDot.transform.position = new Vector3(, newDot.transform.position.y, newDot.transform.position.z);
-
-			//show it on screen
-			newDot.SetActive(true);
+			for (int i = 0; i < rowAmount; i++)
+			{
+				int randomIDForDots = Random.Range(0, 4);
+	
+				GameObject newDot = Instantiate(dots[randomIDForDots]);
+	
+				//make it a parent of dotsContainer
+				newDot.transform.parent = dotsContainer.transform;
+	
+				//position it
+				newDot.transform.position = new Vector3((-Mathf.FloorToInt(rowAmount*1f/2f)*1f) + (1f*i), (Mathf.FloorToInt(columnAmount*1f/2f)*1f) - (1f*j), newDot.transform.position.z);
+	
+				//show it on screen
+				newDot.SetActive(true);
+			}
 		}
 	}
 }

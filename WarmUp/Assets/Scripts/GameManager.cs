@@ -150,6 +150,11 @@ public class GameManager : MonoBehaviour
 				up2Dot.associatedGameObject.SetActive(false);
 				dot.associatedGameObject.SetActive(false);
 
+				//generate a new dot
+				GenerateDot(up1Dot.associatedGameObject.transform.position);
+				GenerateDot(up2Dot.associatedGameObject.transform.position);	
+				GenerateDot(dot.associatedGameObject.transform.position);
+
 				return 1;
 			}
 		}
@@ -178,6 +183,11 @@ public class GameManager : MonoBehaviour
 				down1Dot.associatedGameObject.SetActive(false);
 				down2Dot.associatedGameObject.SetActive(false);
 				dot.associatedGameObject.SetActive(false);
+
+				//generate a new dot
+				GenerateDot(down1Dot.associatedGameObject.transform.position);
+				GenerateDot(down2Dot.associatedGameObject.transform.position);	
+				GenerateDot(dot.associatedGameObject.transform.position);
 
 				return 3;
 			}
@@ -208,6 +218,11 @@ public class GameManager : MonoBehaviour
 				left2Dot.associatedGameObject.SetActive(false);
 				dot.associatedGameObject.SetActive(false);
 
+				//generate a new dot
+				GenerateDot(left1Dot.associatedGameObject.transform.position);
+				GenerateDot(left2Dot.associatedGameObject.transform.position);	
+				GenerateDot(dot.associatedGameObject.transform.position);
+
 				return 4;
 			}
 		}
@@ -236,6 +251,11 @@ public class GameManager : MonoBehaviour
 				right1Dot.associatedGameObject.SetActive(false);
 				right2Dot.associatedGameObject.SetActive(false);
 				dot.associatedGameObject.SetActive(false);
+
+				//generate a new dot
+				GenerateDot(right1Dot.associatedGameObject.transform.position);
+				GenerateDot(right2Dot.associatedGameObject.transform.position);	
+				GenerateDot(dot.associatedGameObject.transform.position);
 
 				return 2;
 			}
@@ -266,6 +286,11 @@ public class GameManager : MonoBehaviour
 				left1Dot.associatedGameObject.SetActive(false);
 				dot.associatedGameObject.SetActive(false);
 
+				//generate a new dot
+				GenerateDot(right1Dot.associatedGameObject.transform.position);
+				GenerateDot(left1Dot.associatedGameObject.transform.position);	
+				GenerateDot(dot.associatedGameObject.transform.position);
+
 				return 6;
 			}
 		}
@@ -294,6 +319,11 @@ public class GameManager : MonoBehaviour
 				up1Dot.associatedGameObject.SetActive(false);
 				down1Dot.associatedGameObject.SetActive(false);
 				dot.associatedGameObject.SetActive(false);
+
+				//generate a new dot
+				GenerateDot(up1Dot.associatedGameObject.transform.position);
+				GenerateDot(down1Dot.associatedGameObject.transform.position);	
+				GenerateDot(dot.associatedGameObject.transform.position);
 
 				return 5;
 			}

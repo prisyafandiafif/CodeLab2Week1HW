@@ -1,12 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+[System.Serializable]
+// A class to hold information of each dot
+public class Dot	 
+{
+	//1 for red, 2 for green, 3 for blue, 4 for yellow
+	public int colorID; 
+
+	//associated GameObject of dots in the gameplay
+	public GameObject associatedGameObject;
+}
 
 public class GameManager : MonoBehaviour 
 {
 	public static GameManager instance;
 
-	// To store gameobjects of Dot
-	public GameObject[] dots;
+	// To store default gameobjects of Dot
+	public GameObject[] dotsDefault;
 
 	// To store a gameobject that contains the arrangement of each dot on the screen
 	public GameObject dotsContainer;
@@ -14,6 +26,9 @@ public class GameManager : MonoBehaviour
 	// To store the amount of row and column
 	public int rowAmount;
 	public int columnAmount;
+
+	// To store classes of Dot
+	public List<Dot> dots = new List<Dot>();
 
 	// To store timer infomration in seconds
 	public float timer;
@@ -51,9 +66,9 @@ public class GameManager : MonoBehaviour
 		{
 			for (int i = 0; i < rowAmount; i++)
 			{
-				int randomIDForDots = Random.Range(0, 4);
+				int randomIDForDots = Random.Range(0, dotsDefault.Length);
 	
-				GameObject newDot = Instantiate(dots[randomIDForDots]);
+				GameObject newDot = Instantiate(dotsDefault[randomIDForDots]);
 	
 				//make it a parent of dotsContainer
 				newDot.transform.parent = dotsContainer.transform;
@@ -63,6 +78,12 @@ public class GameManager : MonoBehaviour
 	
 				//show it on screen
 				newDot.SetActive(true);
+
+				//add to list of dot class
+				Dot toPutDot = new Dot();
+				toPutDot.colorID = randomIDForDots;
+				toPutDot.associatedGameObject = newDot;
+				dots.Add(toPutDot);
 			}
 		}
 	}
@@ -80,5 +101,22 @@ public class GameManager : MonoBehaviour
 	public void CheckArrangementOfDots ()
 	{
 
+	}
+
+	public bool IsDotExistOnPosition (Vector3 positionToCheck)
+	{
+		for (int i = 0; i < dots.Count; i++)
+		{
+			if (dots[i].associatedGameObject.activeSelf &&
+				positionToCheck.x > dots[i].associatedGameObject.transform.position.x - 0.1f &&
+				positionToCheck.x < dots[i].associatedGameObject.transform.position.x + 0.1f &&
+				positionToCheck.y > dots[i].associatedGameObject.transform.position.y - 0.1f &&
+				positionToCheck.y < dots[i].associatedGameObject.transform.position.y + 0.1f)
+			{
+				return true;
+			}
+		}
+
+		return false;
 	}
 }

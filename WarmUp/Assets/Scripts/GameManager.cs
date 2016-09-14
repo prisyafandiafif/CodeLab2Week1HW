@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour 
 {
+	public static GameManager instance;
+
 	// To store gameobjects of Dot
 	public GameObject[] dots;
 
@@ -13,9 +15,21 @@ public class GameManager : MonoBehaviour
 	public int rowAmount;
 	public int columnAmount;
 
+	// To store timer infomration in seconds
+	public float timer;
+	[HideInInspector] public float tempTimer;
+
 	// Use this for initialization
+	void Awake ()
+	{
+		instance = this;
+	}
+
 	void Start () 
 	{
+		//init
+		tempTimer = timer;
+
 		//init random dots on screen;
 		InitDots();
 	}
@@ -23,7 +37,7 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-	
+		CountTimer();
 	}
 
 	// Init random dots
@@ -48,4 +62,13 @@ public class GameManager : MonoBehaviour
 			}
 		}
 	}
+
+	// Count timer
+	public void CountTimer ()
+	{
+		if (timer > 0f)
+		{
+			timer -= Time.deltaTime;
+		}
+	}	
 }

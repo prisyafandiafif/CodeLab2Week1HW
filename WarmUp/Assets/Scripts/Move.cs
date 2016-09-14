@@ -107,10 +107,33 @@ public class Move : MonoBehaviour
 		else
 		if (Input.GetKeyDown(KeyCode.X))
 		{
-			//rotate
-			this.gameObject.transform.eulerAngles += new Vector3(0f, 0f, -90f);
-
-			isHorizontal = !isHorizontal;
+			if (
+				(
+				isHorizontal 
+				&&
+				(
+				GameManager.instance.IsDotExistOnPosition(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y+1, this.gameObject.transform.position.z))
+			 	&&
+				GameManager.instance.IsDotExistOnPosition(new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y-1, this.gameObject.transform.position.z))
+				)	
+				)
+				||
+				(
+				!isHorizontal 
+				&&
+				(
+				GameManager.instance.IsDotExistOnPosition(new Vector3(this.gameObject.transform.position.x+1, this.gameObject.transform.position.y, this.gameObject.transform.position.z))
+			 	&&
+				GameManager.instance.IsDotExistOnPosition(new Vector3(this.gameObject.transform.position.x-1, this.gameObject.transform.position.y, this.gameObject.transform.position.z))
+				)	
+				)
+			   )
+			{ 
+				//rotate
+				this.gameObject.transform.eulerAngles += new Vector3(0f, 0f, -90f);
+	
+				isHorizontal = !isHorizontal;
+			}
 		}
 	}
 }

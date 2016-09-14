@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
 
 	public Image timerBar;
 
+	public Text scoreText;
+
 	// Use this for initialization
 	void Awake ()
 	{
@@ -23,11 +25,19 @@ public class UIManager : MonoBehaviour
 	void Update () 
 	{
 		ResizeTimerBar();
+
+		UpdateScoreText();
 	}
 
 	// Resize timer based on the current timer
 	void ResizeTimerBar ()
 	{
 		timerBar.transform.localScale = new Vector3(GameManager.instance.timer/GameManager.instance.tempTimer, timerBar.transform.localScale.y, timerBar.transform.localScale.z);
+	}
+
+	// Update the score text
+	void UpdateScoreText ()
+	{
+		scoreText.text = "" + GameManager.instance.score;
 	}
 }

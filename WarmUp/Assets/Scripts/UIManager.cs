@@ -9,11 +9,15 @@ public class UIManager : MonoBehaviour
 	public Image timerBar;
 
 	public Text scoreText;
+	public Text highscoreText;
 
 	// Use this for initialization
 	void Awake ()
 	{
 		instance = this;
+
+		//init
+		highscoreText.text = "Highscore: " + PlayerPrefs.GetInt("Highscore");
 	}
 
 	void Start () 

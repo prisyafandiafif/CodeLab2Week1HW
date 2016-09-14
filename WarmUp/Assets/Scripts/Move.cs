@@ -41,6 +41,11 @@ public class Move : MonoBehaviour
 				//move right
 				this.gameObject.transform.position += new Vector3(1f, 0f, 0f);
 			}
+			else
+			{
+				//play sfx
+				AudioManager.instance.PlaySFX(AudioManager.instance.sfxBump);
+			}
 		}
 		//to move left
 		else
@@ -62,6 +67,11 @@ public class Move : MonoBehaviour
 			{
 				//move left
 				this.gameObject.transform.position += new Vector3(-1f, 0f, 0f);
+			}
+			else
+			{
+				//play sfx
+				AudioManager.instance.PlaySFX(AudioManager.instance.sfxBump);
 			}
 		}
 		//to move up
@@ -85,6 +95,11 @@ public class Move : MonoBehaviour
 				//move down
 				this.gameObject.transform.position += new Vector3(0f, -1f, 0f);
 			}
+			else
+			{
+				//play sfx
+				AudioManager.instance.PlaySFX(AudioManager.instance.sfxBump);
+			}
 		}
 		//to move down
 		else
@@ -106,6 +121,11 @@ public class Move : MonoBehaviour
 			{
 				//move up
 				this.gameObject.transform.position += new Vector3(0f, 1f, 0f);
+			}
+			else
+			{
+				//play sfx
+				AudioManager.instance.PlaySFX(AudioManager.instance.sfxBump);
 			}
 		}
 		else
@@ -157,6 +177,9 @@ public class Move : MonoBehaviour
 					rightDot.transform.position += new Vector3(-2f, 0f, 0f);
 					leftDot.transform.position += new Vector3(2f, 0f, 0f);
 
+					//play sfx
+					AudioManager.instance.PlaySFX(AudioManager.instance.sfxSwap);
+
 					//always check the arrangement of dots
 					GameManager.instance.CheckArrangementOfDots();
 				}
@@ -174,6 +197,9 @@ public class Move : MonoBehaviour
 					//swap dots
 					upDot.transform.position += new Vector3(0f, -2f, 0f);
 					downDot.transform.position += new Vector3(0f, 2f, 0f);
+
+					//play sfx
+					AudioManager.instance.PlaySFX(AudioManager.instance.sfxSwap);
 
 					//always check the arrangement of dots
 					GameManager.instance.CheckArrangementOfDots();

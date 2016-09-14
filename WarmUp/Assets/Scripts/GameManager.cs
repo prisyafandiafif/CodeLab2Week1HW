@@ -135,6 +135,9 @@ public class GameManager : MonoBehaviour
 				DotMakeAnArrangement(dots[i]) > 0)
 			{
 				score += addedScore;
+
+				//play sfx
+				AudioManager.instance.PlaySFX(AudioManager.instance.sfxArrange);
 			}
 		}
 	}

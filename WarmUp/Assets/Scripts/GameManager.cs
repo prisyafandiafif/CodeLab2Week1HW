@@ -37,7 +37,11 @@ public class GameManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		// always count down the timer
 		CountTimer();
+
+		// always check the arrangement of dots
+		CheckArrangementOfDots();
 	}
 
 	// Init random dots
@@ -71,4 +75,10 @@ public class GameManager : MonoBehaviour
 			timer -= Time.deltaTime;
 		}
 	}	
+	
+	// Check arrangement of dots
+	public void CheckArrangementOfDots ()
+	{
+
+	}
 }
